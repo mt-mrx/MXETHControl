@@ -1,0 +1,30 @@
+### Changelog
+2020-11-29  0.1  First version, just with WiFi, MQTT etc. nothing RFM69 yet
+2020-12-05  0.2-0.4 A lot of progress
+2020-12-13  0.5  Datapakets are now properly received via RFM69 decoded and verified (CRC)
+2020-12-14  0.6  sensor raw packages are now analyzed and being sent to MQTT
+2020-12-14  0.7  Added publishing of the complete sensor package as json string
+2020-12-25  0.8  Added first subscription to thermostat topics
+2020-12-25  0.9  Added packet assembling, crc calculation, reverse byte order, bit stuffing
+2020-12-26  1.0  Added packet sending, it's not yet properly received by the thermostat
+2021-01-10  1.3  Contains partially usage of a custom preamble. Not working.
+2021-01-10  1.4  Changed TX to send unlimited bit stream with own preamble and own Sync words
+2021-01-10  1.5  WindowSensor and RemoteControl work almost fine. Only issue are negative numbers
+                 which means where bit stuffing has happened. So in general bit stuffed commands are broken.
+2021-01-10  1.6  Fully working version. TODO: Add queuing mechanism for MQTT cmds.
+2021-01-11  1.7  Added float verification of temperature setting
+                 Added MQTT command queue.
+                 Removed useless USE_MQTT define
+2021-01-11  1.8  Implemented RFM69 reset via MQTT
+                 Code cleanup
+2021-01-11  1.9  Changed CRC error message to MXDEBUG level.
+2021-01-14  2.0  Added CFG_RF69_POWERLEVEL; Added two more thermostats
+2021-01-17  2.1  Increased CFG_RF69_POWERLEVEL from 25 to 31, sometime ThermostatSZ does not get the messages.
+2021-01-30  2.3  Added 99xxxx group topics, they are exactly handled like thermostats,
+                 it's just to put those at the end of the thermostat list.
+2021-02-06  2.4  Restructured mqtt topics and removed several retain flags.
+                 Implemented status/state topic.
+                 Implemented bugfix to ignore empty thermostat commands.
+2021-02-06  2.5  Fixed bug that "online" state is not properly retained
+2021-02-13  2.6  Code cleanup
+
